@@ -12,10 +12,11 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("MongoDB Connected!");
 })
-    app.get('/', (req, res) => {
+.catch((err) => console.log(err));
+ app.get('/', (req, res) => {
     res.end('it works!');
 });
-.catch((err) => console.log(err));
+
 app.use("/api/users", userRoute);
 app.use("/api/pins", pinRoute);
 
